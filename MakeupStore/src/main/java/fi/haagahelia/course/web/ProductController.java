@@ -1,6 +1,9 @@
 package fi.haagahelia.course.web;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,10 +23,15 @@ import fi.haagahelia.course.domain.ProductRepository;
 public class ProductController {
 	
 	@Autowired
+	private HttpSession httpSession;
+	
+	@Autowired
 	private ProductRepository repository;
 	
 	@Autowired
 	private CategoryRepository crepository;
+	
+	private List<String> shoppingList=new ArrayList<String>();
 	
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	
@@ -35,7 +43,9 @@ public class ProductController {
 	// Show all products
     @RequestMapping(value="/login")
     public String login() {	
+    	httpSession.setAttribute("products", shoppingList);
         return "login";
+        
     }	
 	
 	@RequestMapping(value="/productlist", method=RequestMethod.GET)
@@ -74,8 +84,28 @@ public class ProductController {
     	
     	//here should be method to save the products in the session then sends them to a new template with a list of products in a shopping cart
     	//it will show the name attribute of the product object then calculate the total price
-    	//repository.delete(productId);
-        return "redirect:../productlist";
+    	
+    	List<Product> prods = (List<Product>)httpSession.getAttribute("products");
+
+    	Product newProd=repository.findOne(productId);
+        prods.add(newProd);
+
+        httpSession.setAttribute("products",prods);
+    	
+        model.addAttribute("products", prods);
+        
+        double price;
+        double sum=0;
+        
+        for (int i=0; i<prods.size();i++)
+        {
+        	Product listitem =prods.get(i);
+        	sum+=listitem.getPrice();
+        }
+        
+        model.addAttribute("totalprice", sum);
+    	
+        return "shoppingcart";
     }     
     
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
