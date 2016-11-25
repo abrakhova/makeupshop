@@ -19,6 +19,7 @@
 	</div>
     <table class="table table-striped">
 		<tr>
+			<th>Image</th>
 		    <th>Name</th>
 		    <th>Brand</th>
 		    <th>Color</th>
@@ -26,10 +27,12 @@
 		    <th>Sku</th>
 		    <th>Category</th>
 		    <th></th>
+		    <th></th>
 		    <th sec:authorize="hasRole('ADMIN')"> </th>
 		    
 		</tr>  
     	<tr th:each = "product : ${products}">
+    		<td><img th:src="${product.image}"/></td>
     		<td th:text="${product.name}"></td>
     		<td th:text="${product.brand}"></td>
     		<td th:text="${product.color}"></td>
@@ -40,6 +43,12 @@
  			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete</a></td>	
     	</tr>
      </table>
+    
+   <!--<div th:each = "product : ${products}">
+   <img th:src="${product.image}"/> 
+   </div>  -->
+   
+     
 	 <a href="/add" class="btn btn-success">Add Product</a>
 	  
 </body>

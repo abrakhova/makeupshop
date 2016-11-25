@@ -31,9 +31,15 @@ public class MakeupStoreApplication {
 			crepository.save(new Category("Lipstick"));
 			crepository.save(new Category("Foundation"));
 			crepository.save(new Category("Eyeliner"));
+			crepository.save(new Category("Eyeshadow"));
+			crepository.save(new Category("Mascara"));
 			
-			repository.save(new Product("Fabulous", "Maybelline","red",250,"1001", crepository.findByName("Lipstick").get(0)));
-			repository.save(new Product("Infailible", "L'Oreal", "ivory", 300, "1002", crepository.findByName("Foundation").get(0)));	
+			repository.save(new Product("Fabulous", "Maybelline","red",250,"1001","images/lipstick1.jpg", crepository.findByName("Lipstick").get(0)));
+			repository.save(new Product("Infailible", "L'Oreal", "ivory", 300, "1002","images/foundation1.jpg", crepository.findByName("Foundation").get(0)));	
+			repository.save(new Product("Nude palette", "Maybelline", "brown", 300, "1003","images/eyeshadow1.jpg", crepository.findByName("Eyeshadow").get(0)));	
+			repository.save(new Product("Push up Drama", "Maybelline", "black", 450, "1004","images/mascara1.jpg", crepository.findByName("Mascara").get(0)));	
+			repository.save(new Product("Satin liquid", "Maybelline", "beige", 600, "1005","images/foundation2.jpg", crepository.findByName("Foundation").get(0)));	
+			repository.save(new Product("Lash Sensational", "Maybelline", "very black", 450, "1006","images/mascara2.jpg", crepository.findByName("Mascara").get(0)));	
 			
 			// Create users: admin/admin user/user
 						User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "user@gmail.com", "USER");

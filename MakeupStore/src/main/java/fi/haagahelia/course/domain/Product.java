@@ -22,6 +22,7 @@ public class Product {
 	private String color;
 	private double price;
 	private String sku;
+	private String image;
 	
 	@ManyToOne
     @JsonIgnore
@@ -31,13 +32,21 @@ public class Product {
 	public Product() {
 		
 	}
-	public Product(String name, String brand, String color,double price, String sku, Category category) {
+	public Product(String name, String brand, String color,double price, String sku, String image, Category category) {
 		this.setName(name);
 		this.setBrand(brand);
 		this.setColor(color);
 		this.setPrice(price);
 		this.setSku(sku);
+		this.setImage(image);
 		this.setCategory(category);
+		
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	public long getId() {
 		return id;
@@ -84,6 +93,6 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", brand=" + brand
-				+ ", color=" + color + ", price=" + price + ", sku=" + sku+"]";
+				+ ", color=" + color + ", price=" + price + ", sku=" + sku+", image=" + image+"]";
 	}
 }
