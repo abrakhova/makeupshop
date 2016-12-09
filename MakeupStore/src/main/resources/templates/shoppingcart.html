@@ -4,8 +4,10 @@
     <title>Product list</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{../css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet" href="/css/mycss.css" th:href="@{../css/mycss.css}"/>
 </head>
 <body>
+<div class="container">
 	<div class="col-md-4">
 	<h1>Shopping cart</h1>
 	</div>
@@ -40,6 +42,8 @@
      <p th:text="${totalprice}"></p>
      
      <a href="/productlist" class="btn btn-success">Continue shopping</a>
+     
+</div>
      
 </body>
 </html>

@@ -3,8 +3,11 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Login page</title>
+        <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{../css/bootstrap.min.css}" />
+        <link type="text/css" rel="stylesheet" href="/css/mycss.css" th:href="@{../css/mycss.css}"/>
     </head>
     <body>
+    <div class="center">
         <div th:if="${param.error}">
             Invalid username and password.
         </div>
@@ -14,7 +17,11 @@
         <form th:action="@{/login}" method="post">
             <div><label> User Name : <input type="text" name="username"/> </label></div>
             <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
+            <div><input type="submit" class="btn btn-success" value="Sign In"/></div>
         </form>
+        
+        <a th:href="@{/signup}">Sign-up</a>
+        
+    </div>
     </body>
 </html>

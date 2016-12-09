@@ -21,8 +21,8 @@ public class User {
     @Column(name = "password", nullable = false)
     private String passwordHash;
     
-    @Column(name = "email", nullable = false)
-    private String email;
+    //@Column(name = "email", nullable = false)
+    //private String email;
 
     @Column(name = "role", nullable = false)
     private String role;
@@ -30,22 +30,22 @@ public class User {
     public User() {
     }
 
-	public User(String username, String passwordHash, String email, String role) {
+	public User(String username, String passwordHash, String role) {
 		super();
 		this.username = username;
 		this.passwordHash = passwordHash;
-		this.email=email;
+		//this.email=email;
 		this.role = role;
 	}
 
-	public String getEmail() {
+	/*public String getEmail() {
 		return email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	 */
 	public Long getId() {
 		return id;
 	}

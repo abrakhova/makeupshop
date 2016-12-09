@@ -4,10 +4,12 @@
     <title>Product List</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+    <link type="text/css" rel="stylesheet" href="/css/mycss.css" th:href="@{../css/mycss.css}"/>
 </head>
 <body>
+	<div class="container center">
 	<h1>Add product</h1>
-	<div>
+	
 		<form th:object="${product}" th:action="@{save}" action="#" method="post">
 		  	<label for="name">Name</label>
 			<input type="text" id="name" th:field="*{name}" />
@@ -26,12 +28,12 @@
 			
 			<div style="clear: both; display: block; height: 10px;"></div>						
 		  	<label for="catlist">Category</label>
-			 <select id="catlist" th:field="*{category}" class="form-control">
+			 <select id="catlist" th:field="*{category}" class="form-control center">
        			<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
     		</select>
 			
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<input type="submit" value="Save"></input>
+			<input type="submit" class="btn btn-success" value="Save"></input>
 		</form>
 	</div>
 </body>
