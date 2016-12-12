@@ -82,8 +82,8 @@ public class ProductController {
     @RequestMapping(value = "/buy/{id}", method = RequestMethod.GET)
     public String buyProduct(@PathVariable("id") Long productId, Model model) {
     	
-    	//here should be method to save the products in the session then sends them to a new template with a list of products in a shopping cart
-    	//it will show the name attribute of the product object then calculate the total price
+    	//here I have the method to save the products in the session and send them to a new template with a list of products in a shopping cart
+    	//the list shows the name of the product object then calculates the total price
     	
     	List<Product> prods = (List<Product>)httpSession.getAttribute("products");
 
